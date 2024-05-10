@@ -4,6 +4,7 @@ vim.keymap.set('n', '<C-w><bar>', ':vsplit<CR>', { desc = 'Split window (vertica
 vim.keymap.set('n', '<leader>Ci', ':e ~/.config/nvim/init.lua<CR>', { desc = 'Edit init.lua' })
 vim.keymap.set('n', '<leader>Ck', ':e ~/.config/nvim/lua/custom/keymaps.lua<CR>', { desc = 'Edit custom/keymaps.lua' })
 vim.keymap.set('n', '<leader>Co', ':e ~/.config/nvim/lua/custom/options.lua<CR>', { desc = 'Edit custom/options.lua' })
+vim.keymap.set('n', '<leader>Cp', ':e ~/.config/nvim/lua/custom/plugins<CR>', { desc = 'Edit custom/plugins' })
 vim.keymap.set('n', '<leader>f', '<CMD>Telescope frecency theme=dropdown<CR>', { desc = 'Display buffers by frecency' })
 vim.keymap.set('n', '<leader>gl', '<CMD>FloatermNew! --cwd=<root> --disposable lazygit<CR>', { desc = 'Show lazygit' })
 vim.keymap.set('n', '<leader>tt', '<CMD>FloatermToggle<CR>', { desc = 'Toggle floaterm' })
