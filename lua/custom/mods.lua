@@ -1,0 +1,27 @@
+-- local buf_map = function(bufnr, mode, lhs, rhs, opts)
+--   vim.api.nvim_buf_set_keymap(bufnr, mode, lhs, rhs, opts or {
+--     silent = true,
+--   })
+-- end
+--
+-- -- Helper functions
+-- local function filetype_autocmd(ft, callback)
+--   vim.api.nvim_create_autocmd('FileType', {
+--     pattern = ft,
+--     callback = callback,
+--   })
+-- end
+--
+-- local function run_file(key, cmd_template, split_cmd)
+--   local cmd = cmd_template:gsub('%%', vim.fn.expand '%:p')
+--   buf_map(0, 'n', key, function()
+--     vim.cmd(split_cmd)
+--     vim.cmd('terminal ' .. cmd)
+--   end)
+-- end
+--
+-- -- Markdown
+-- filetype_autocmd('markdown', function()
+--   run_file('<Leader>mr', 'cat % | mdembed | mods', 'vsplit')
+--   run_file('<Leader>mc', 'cat % | mdembed | mods -C', 'vsplit')
+-- end)
