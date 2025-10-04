@@ -12,6 +12,9 @@ return {
         },
       },
       use_bundled_binary = true, -- Use local `mcp-hub` binary
+      -- native_servers = {
+      --   git = require 'custom.servers.git_server',
+      -- },
     }
   end,
 }
