@@ -1,6 +1,4 @@
-local function gh(repo) return 'https://github.com/' .. repo end
-
-vim.pack.add { gh 'rgroli/other.nvim' }
+vim.pack.add { 'https://github.com/rgroli/other.nvim' }
 
 require('other-nvim').setup {
   mappings = {

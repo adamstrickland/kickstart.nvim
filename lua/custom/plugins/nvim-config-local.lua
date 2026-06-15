@@ -1,6 +1,4 @@
-local function gh(repo) return 'https://github.com/' .. repo end
-
-vim.pack.add { gh 'klen/nvim-config-local' }
+vim.pack.add { 'https://github.com/klen/nvim-config-local' }
 
 require('config-local').setup {
   autocommands_create = true,

@@ -1,50 +1,49 @@
-local function gh(repo) return 'https://github.com/' .. repo end
-local function run_mcphub_bundled_build(plugin_path)
-  local build_script = vim.fs.joinpath(plugin_path, 'bundled_build.lua')
-  if not vim.uv.fs_stat(build_script) then return false end
-
-  local ok, err = pcall(dofile, build_script)
-  if not ok then
-    vim.notify(('Build failed for mcphub.nvim:\n%s'):format(err), vim.log.levels.ERROR)
-    return false
-  end
-  return true
-end
-
-vim.pack.add {
-  gh 'ravitemer/mcphub.nvim',
-  gh 'nvim-lua/plenary.nvim',
-}
-
-vim.api.nvim_create_autocmd('PackChanged', {
-  group = vim.api.nvim_create_augroup('custom-mcphub-build', { clear = true }),
-  callback = function(ev)
-    local data = ev.data
-    if not data or not data.spec then return end
-    local name = data.spec.name
-    if name ~= 'mcphub.nvim' and name ~= 'ravitemer/mcphub.nvim' then return end
-    if data.kind ~= 'install' and data.kind ~= 'update' then return end
-    run_mcphub_bundled_build(data.path)
-  end,
-})
-
-local mcphub_root = vim.fs.joinpath(vim.fn.stdpath 'data', 'site', 'pack', 'core', 'opt', 'mcphub.nvim')
-local bundled_executable = vim.fs.joinpath(mcphub_root, 'bundled', 'mcp-hub', 'node_modules', '.bin', 'mcp-hub')
-if vim.fn.executable(bundled_executable) ~= 1 then run_mcphub_bundled_build(mcphub_root) end
-
-local ok_mcphub, mcphub = pcall(require, 'mcphub')
-if ok_mcphub then
-  local ok_setup, err = pcall(mcphub.setup, {
-    extensions = {
-      avante = {
-        make_slash_commands = true,
-      },
-    },
-    use_bundled_binary = true,
-    -- native_servers = {
-    --   git = require 'custom.servers.git_server',
-    -- },
-  })
-
-  if not ok_setup then vim.notify(('Failed to initialize mcphub.nvim: %s'):format(err), vim.log.levels.WARN) end
-end
+-- local function run_mcphub_bundled_build(plugin_path)
+--   local build_script = vim.fs.joinpath(plugin_path, 'bundled_build.lua')
+--   if not vim.uv.fs_stat(build_script) then return false end
+--
+--   local ok, err = pcall(dofile, build_script)
+--   if not ok then
+--     vim.notify(('Build failed for mcphub.nvim:\n%s'):format(err), vim.log.levels.ERROR)
+--     return false
+--   end
+--   return true
+-- end
+--
+-- vim.pack.add {
+--   'https://github.com/ravitemer/mcphub.nvim',
+--   'https://github.com/nvim-lua/plenary.nvim',
+-- }
+--
+-- vim.api.nvim_create_autocmd('PackChanged', {
+--   group = vim.api.nvim_create_augroup('custom-mcphub-build', { clear = true }),
+--   callback = function(ev)
+--     local data = ev.data
+--     if not data or not data.spec then return end
+--     local name = data.spec.name
+--     if name ~= 'mcphub.nvim' and name ~= 'ravitemer/mcphub.nvim' then return end
+--     if data.kind ~= 'install' and data.kind ~= 'update' then return end
+--     run_mcphub_bundled_build(data.path)
+--   end,
+-- })
+--
+-- local mcphub_root = vim.fs.joinpath(vim.fn.stdpath 'data', 'site', 'pack', 'core', 'opt', 'mcphub.nvim')
+-- local bundled_executable = vim.fs.joinpath(mcphub_root, 'bundled', 'mcp-hub', 'node_modules', '.bin', 'mcp-hub')
+-- if vim.fn.executable(bundled_executable) ~= 1 then run_mcphub_bundled_build(mcphub_root) end
+--
+-- local ok_mcphub, mcphub = pcall(require, 'mcphub')
+-- if ok_mcphub then
+--   local ok_setup, err = pcall(mcphub.setup, {
+--     extensions = {
+--       avante = {
+--         make_slash_commands = true,
+--       },
+--     },
+--     use_bundled_binary = true,
+--     -- native_servers = {
+--     --   git = require 'custom.servers.git_server',
+--     -- },
+--   })
+--
+--   if not ok_setup then vim.notify(('Failed to initialize mcphub.nvim: %s'):format(err), vim.log.levels.WARN) end
+-- end

@@ -1,5 +1,5 @@
 local modules = {
-  'kickstart.plugins.debug',
+  -- 'kickstart.plugins.debug',
   'kickstart.plugins.indent_line',
   'kickstart.plugins.lint',
   -- 'kickstart.plugins.autopairs',

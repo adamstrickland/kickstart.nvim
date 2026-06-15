@@ -1,8 +1,6 @@
-local function gh(repo) return 'https://github.com/' .. repo end
-
 vim.pack.add {
-  gh 'nvim-telescope/telescope-frecency.nvim',
-  gh 'kkharji/sqlite.lua',
+  'https://github.com/nvim-telescope/telescope-frecency.nvim',
+  'https://github.com/kkharji/sqlite.lua',
 }
 
 local telescope = require 'telescope'

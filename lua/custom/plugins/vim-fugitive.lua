@@ -1,3 +1,1 @@
-local function gh(repo) return 'https://github.com/' .. repo end
-
-vim.pack.add { gh 'tpope/vim-fugitive' }
+vim.pack.add { 'https://github.com/tpope/vim-fugitive' }

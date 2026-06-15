@@ -1,11 +1,9 @@
 vim.cmd [[ let g:neo_tree_remove_legacy_commands = 1 ]]
-local function gh(repo) return 'https://github.com/' .. repo end
-
 vim.pack.add {
-  { src = gh 'nvim-neo-tree/neo-tree.nvim', version = 'v3.x' },
-  gh 'nvim-lua/plenary.nvim',
-  gh 'nvim-tree/nvim-web-devicons',
-  gh 'MunifTanjim/nui.nvim',
+  { src = 'https://github.com/nvim-neo-tree/neo-tree.nvim', version = 'v3.x' },
+  'https://github.com/nvim-lua/plenary.nvim',
+  'https://github.com/nvim-tree/nvim-web-devicons',
+  'https://github.com/MunifTanjim/nui.nvim',
 }
 
 require('neo-tree').setup {

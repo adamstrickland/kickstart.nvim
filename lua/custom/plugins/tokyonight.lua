@@ -1,6 +1,4 @@
-local function gh(repo) return 'https://github.com/' .. repo end
-
-vim.pack.add { gh 'folke/tokyonight.nvim' }
+vim.pack.add { 'https://github.com/folke/tokyonight.nvim' }
 
 require('tokyonight').setup {
   -- style = 'day',
