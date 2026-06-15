@@ -1,17 +1,12 @@
--- File: lua/custom/plugins/nvim-autopairs.lua
+local function gh(repo) return 'https://github.com/' .. repo end
 
-return {
-  "windwp/nvim-autopairs",
-  -- Optional dependency
-  dependencies = { 'hrsh7th/nvim-cmp' },
-  config = function()
-    require("nvim-autopairs").setup {}
-    -- If you want to automatically add `(` after selecting a function or method
-    local cmp_autopairs = require('nvim-autopairs.completion.cmp')
-    local cmp = require('cmp')
-    cmp.event:on(
-      'confirm_done',
-      cmp_autopairs.on_confirm_done()
-    )
-  end,
+vim.pack.add {
+  gh 'windwp/nvim-autopairs',
+  gh 'hrsh7th/nvim-cmp',
 }
+
+require('nvim-autopairs').setup {}
+
+local ok_cmp_autopairs, cmp_autopairs = pcall(require, 'nvim-autopairs.completion.cmp')
+local ok_cmp, cmp = pcall(require, 'cmp')
+if ok_cmp_autopairs and ok_cmp then cmp.event:on('confirm_done', cmp_autopairs.on_confirm_done()) end

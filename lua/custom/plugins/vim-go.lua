@@ -1,1 +1,3 @@
-return { 'fatih/vim-go' }
+local function gh(repo) return 'https://github.com/' .. repo end
+
+vim.pack.add { gh 'fatih/vim-go' }

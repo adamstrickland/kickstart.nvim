@@ -1,1 +1,3 @@
-return { "jlanzarotta/bufexplorer" }
+local function gh(repo) return 'https://github.com/' .. repo end
+
+vim.pack.add { gh 'jlanzarotta/bufexplorer' }

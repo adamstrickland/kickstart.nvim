@@ -1,1 +1,3 @@
-return { 'voldikss/vim-floaterm' }
+local function gh(repo) return 'https://github.com/' .. repo end
+
+vim.pack.add { gh 'voldikss/vim-floaterm' }

@@ -1,10 +1,7 @@
-return {
-  "kylechui/nvim-surround",
-  config = function()
-    require("nvim-surround").setup({
+local function gh(repo) return 'https://github.com/' .. repo end
 
-    })
-  end,
-  event = "VeryLazy",
-  version = "*",
+vim.pack.add {
+  { src = gh 'kylechui/nvim-surround', version = vim.version.range '*' },
 }
+
+require('nvim-surround').setup {}

@@ -1,22 +1,12 @@
-return {
-  "klen/nvim-config-local",
-  config = function()
-    require('config-local').setup {
-      -- Default options (optional)
+local function gh(repo) return 'https://github.com/' .. repo end
 
-      autocommands_create = true, -- Create autocommands (VimEnter, DirectoryChanged)
+vim.pack.add { gh 'klen/nvim-config-local' }
 
-      commands_create = true,     -- Create commands (ConfigLocalSource, ConfigLocalEdit, ConfigLocalTrust, ConfigLocalIgnore)
-
-      -- Config file patterns to load (lua supported)
-      config_files = { ".nvim.lua", ".nvimrc" },
-
-      -- Where the plugin keeps files data
-      hashfile = vim.fn.stdpath("data") .. "/config-local",
-
-      lookup_parents = false, -- Lookup config files in parent directories
-
-      silent = false,         -- Disable plugin messages (Config loaded/ignored)
-    }
-  end
+require('config-local').setup {
+  autocommands_create = true,
+  commands_create = true,
+  config_files = { '.nvim.lua', '.nvimrc' },
+  hashfile = vim.fn.stdpath 'data' .. '/config-local',
+  lookup_parents = false,
+  silent = false,
 }
